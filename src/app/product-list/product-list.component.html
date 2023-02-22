@@ -1,0 +1,49 @@
+<!-- <form [formGroup]="form">
+  <table class="table" formArrayName="arr">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Goods</th>
+        <th scope="col">Works</th>
+        <th scope="col">Services</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [formGroupName]="i" *ngFor="let item of Arr.controls; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <input type="text" formControlName="goods" class="form-control" (input)="cal()" />
+        </td>
+        <td><input type="text" formControlName="works" class="form-control" /></td>
+        <td><input type="text" formControlName="services" class="form-control" /></td>
+      </tr>
+    </tbody>
+  </table>
+</form> -->
+
+<form [formGroup]="form" style="margin-top:50px">
+  <div formArrayName="arr">
+    <div *ngFor="let row of Arr.controls; let i = index">
+      <div [formGroupName]="i" style="display:flex;gap:10px">
+        <div class="goods">
+          <label *ngIf="i == 0" for="goods{{ i }}">Goods</label>
+          <input type="number" id="goods{{ i }}" formControlName="goods" />
+        </div>
+
+        <div class="works">
+          <label *ngIf="i == 0" for="works{{ i }}">Works</label>
+          <input type="number" id="works{{ i }}" formControlName="works" />
+        </div>
+
+        <div class="services">
+          <label *ngIf="i == 0" for="services{{ i }}">Services</label>
+          <input type="number" id="services{{ i }}" formControlName="services" />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<button (click)="reset()">Reset</button>
+
+<button (click)="sumGoods()">sum</button>
